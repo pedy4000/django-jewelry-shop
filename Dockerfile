@@ -1,5 +1,5 @@
 # pull the official base image
-FROM --platform=$BUILDPLATFORM python:3.7-alpine AS builder
+FROM python:3.9-alpine AS node
 
 # expose port
 EXPOSE 8000
@@ -8,7 +8,7 @@ EXPOSE 8000
 WORKDIR /
 
 # install dependencies
-COPY requirements.txt /app
+COPY requirements.txt /
 RUN pip3 install -r requirements.txt --no-cache-dir
 
 # copy project
