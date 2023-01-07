@@ -12,7 +12,7 @@ pipeline {
 //     gitParameter name: 'RELEASE_TAG',
 //    type: 'PT_TAG',
 //    defaultValue: 'master'
-    string(name: 'RELEASE_TAG', defaultValue: 'master',  description: 'tag of branch')
+//    string(name: 'RELEASE_TAG', defaultValue: 'master',  description: 'tag of branch')
   }
 
   stages {
@@ -24,17 +24,9 @@ pipeline {
     stage('Build Image') {
       steps {
         script {
-          if (isMaster()) {
-            dockerImage = docker.build "$registry:latest"
-          } else {
-            dockerImage = docker.build "$registry:${params.RELEASE_TAG}"
-          }
+          dockerImage = docker.build "$registry:latest"
         }
       }
     }
   }
-}
-
-def isMaster() {
- "${params.RELEASE_TAG}" == "master"
 }
