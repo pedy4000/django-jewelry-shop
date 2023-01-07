@@ -36,7 +36,7 @@ pipeline {
   post {
     cleanup {
         sh "echo cleanup images"
-        sh "sudo docker image prune"
+        sh "docker image prune"
     }
   }
 }
