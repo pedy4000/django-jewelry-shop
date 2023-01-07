@@ -39,12 +39,12 @@ pipeline {
             sh "echo cleanup container"
             sh "docker stop production || true"
             sh "docker container prune -f"
-            sh "docker run -p 8000:8000 --name production pedram/django-shop-server:latest"
+            sh "docker run -d -p 8000:8000 --name production pedram/django-shop-server:latest"
           } else {
             sh "echo cleanup container"
             sh "docker stop development || true"
             sh "docker container prune -f"
-            sh "docker run -p 8000:8000 --name development pedram/django-shop-server:dev"
+            sh "docker run -d -p 8000:8000 --name development pedram/django-shop-server:dev"
           }
         }
       }
