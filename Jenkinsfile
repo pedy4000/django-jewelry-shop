@@ -18,7 +18,7 @@ pipeline {
   stages {
     stage('Basic Information') {
       steps {
-        sh "echo tag: ${params.RELEASE_TAG}"
+        sh "echo tag: latest"
       }
     }
     stage('Build Image') {
