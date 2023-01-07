@@ -9,9 +9,10 @@ pipeline {
   agent any
 
   parameters {
-    gitParameter name: 'RELEASE_TAG',
-    type: 'PT_TAG',
-    defaultValue: 'master'
+//     gitParameter name: 'RELEASE_TAG',
+//    type: 'PT_TAG',
+//    defaultValue: 'master'
+    string(name: 'RELEASE_TAG', defaultValue: 'master',  description: 'tag of branch')
   }
 
   stages {
