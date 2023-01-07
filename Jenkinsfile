@@ -9,9 +9,6 @@ pipeline {
   agent any
 
   parameters {
-//     gitParameter name: 'RELEASE_TAG',
-//    type: 'PT_TAG',
-//    defaultValue: 'master'
     string(name: 'RELEASE_TAG', defaultValue: 'dev',  description: 'tag of branch')
   }
 
@@ -37,14 +34,12 @@ pipeline {
         script {
           if (isMaster()) {
             sh "echo cleanup container"
-            sh "docker stop production || true"
-            sh "docker container prune -f"
-            sh "docker run -d -p 8000:8000 --name production pedram/django-shop-server:latest"
+            sh "docker stop production || true && docker rm production || true"
+            sh "docker run -d -p 8000:8000 --name production $registry:latest"
           } else {
             sh "echo cleanup container"
-            sh "docker stop development || true"
-            sh "docker container prune -f"
-            sh "docker run -d -p 8000:8000 --name development pedram/django-shop-server:dev"
+            sh "docker stop development || true && docker rm development || true"
+            sh "docker run -d -p 8001:8000 --name development $registry:${params.RELEASE_TAG}"
           }
         }
       }
