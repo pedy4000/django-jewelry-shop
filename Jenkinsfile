@@ -8,25 +8,33 @@ pipeline {
 
   agent any
 
-//  parameters {
-//    gitParameter name: 'RELEASE_TAG',
+  parameters {
+//     gitParameter name: 'RELEASE_TAG',
 //    type: 'PT_TAG',
 //    defaultValue: 'master'
-//    string(name: 'RELEASE_TAG', defaultValue: 'master',  description: 'tag of branch')
-//  }
+    string(name: 'RELEASE_TAG', defaultValue: 'master',  description: 'tag of branch')
+  }
 
   stages {
     stage('Basic Information') {
       steps {
-        sh "echo tag: latest"
+        sh "echo tag: ${params.RELEASE_TAG}"
       }
     }
     stage('Build Image') {
       steps {
         script {
-          dockerImage = docker.build "$registry:latest"
+          if (isMaster()) {
+            dockerImage = docker.build "$registry:latest"
+          } else {
+            dockerImage = docker.build "$registry:${params.RELEASE_TAG}"
+          }
         }
       }
     }
   }
+}
+
+def isMaster() {
+ "${params.RELEASE_TAG}" == "master"
 }
