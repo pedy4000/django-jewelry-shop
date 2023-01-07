@@ -33,6 +33,12 @@ pipeline {
       }
     }
   }
+  post {
+    cleanup {
+        sh "echo cleanup images"
+        sh "docker image prune -f"
+    }
+  }
 }
 
 def isMaster() {
