@@ -32,20 +32,20 @@ pipeline {
         }
       }
     }
-  }
-  stage('Run Container') {
-    steps {
-      script {
-        if (isMaster()) {
-          sh "echo cleanup container"
-          sh "docker stop production"
-          sh "docker container prune -f"
-          sh "docker run -p 8000:8000 --name production pedram/django-shop-server:latest"
-        } else {
-          sh "echo cleanup container"
-          sh "docker stop development"
-          sh "docker container prune -f"
-          sh "docker run -p 8000:8000 --name development pedram/django-shop-server:dev"
+    stage('Run Container') {
+      steps {
+        script {
+          if (isMaster()) {
+            sh "echo cleanup container"
+            sh "docker stop production"
+            sh "docker container prune -f"
+            sh "docker run -p 8000:8000 --name production pedram/django-shop-server:latest"
+          } else {
+            sh "echo cleanup container"
+            sh "docker stop development"
+            sh "docker container prune -f"
+            sh "docker run -p 8000:8000 --name development pedram/django-shop-server:dev"
+          }
         }
       }
     }
