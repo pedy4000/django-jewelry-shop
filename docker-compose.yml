@@ -1,6 +1,7 @@
 version: '3.0'
 services:
-  web: 
+  web:
+    image: pedram/django-shop-server:latest
     build: .
     ports: 
       - '8000:8000'
