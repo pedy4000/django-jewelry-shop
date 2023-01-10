@@ -1,0 +1,7 @@
+services:
+  web: 
+    build:
+      context: production
+      target: node
+    ports: 
+      - '8000:8000'
