@@ -1,0 +1,21 @@
+version: '3.0'
+services:
+  web:
+    image: docker-temp-repos.myket.ir/jewerly-shop:dev
+    ports: 
+      - '8001:8000'
+    deploy:
+      mode: replicated
+      replicas: 2
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 3
+        window: 120s
+      update_config:
+        parallelism: 1
+        delay: 10s
+        failure_action: continue
+        monitor: 60s
+        max_failure_ratio: 0.3
+
