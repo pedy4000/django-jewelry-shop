@@ -17,5 +17,4 @@ services:
         delay: 10s
         failure_action: continue
         monitor: 60s
-        order: start-first
         max_failure_ratio: 0.3
