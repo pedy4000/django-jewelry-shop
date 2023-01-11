@@ -1,7 +1,7 @@
 version: '3.0'
 services:
   web:
-    image: pedram/django-shop-server:dev
+    image: docker-temp-repos.myket.ir/jewerly-shop:dev
     ports: 
       - '8001:8000'
     deploy:
