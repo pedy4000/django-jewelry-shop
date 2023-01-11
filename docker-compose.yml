@@ -15,6 +15,10 @@ services:
       update_config:
         parallelism: 1
         delay: 10s
-        failure_action: continue
+        failure_action: rollback
         monitor: 60s
+        order: start-first
         max_failure_ratio: 0.3
+      rollback_config:
+        parallelism: 0
+        order: stop-first
