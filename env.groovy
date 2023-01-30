@@ -1,5 +1,3 @@
-env.DB_URL="hello"
-env.DB_URL2="hello2"
 SERVICE_NAME="django-jewelry-shop"
-SERVICE_BRANCH_NAME="dev"
+SERVICE_BRANCH_NAME="origin dev"
 SERVICE_GIT_URL="https://github.com/pedy4000/django-jewelry-shop"
