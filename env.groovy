@@ -1,5 +1,6 @@
 SERVICE_NAME="django-jewelry-shop"
-SERVICE_BRANCH_NAME="origin main"
+SERVICE_REMOTE_NAME="origin"
+SERVICE_BRANCH_NAME="dev"
 SERVICE_GIT_URL="https://github.com/pedy4000/django-jewerly-shop"
 
 DEPLOY_SCRIPT_NAME="deploy-script"
