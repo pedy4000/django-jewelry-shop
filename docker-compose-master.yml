@@ -1,6 +1,6 @@
 version: '3.4'
 services:
   web:
-    image: docker-temp-repos.myket.ir/jewerly-shop:dev
+    image: docker-temp-repos.myket.ir/jewerly-shop:latest
     ports: 
-      - '8001:8000'
+      - '8000:8000'
