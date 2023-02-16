@@ -16,3 +16,5 @@ services:
         monitor: 60s
         max_failure_ratio: 0.3
         order: start-first
+      environment:
+        - COMMIT_HASH=${COMMIT_HASH}
