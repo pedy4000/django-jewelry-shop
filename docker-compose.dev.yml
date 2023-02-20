@@ -2,5 +2,8 @@ version: '3.4'
 services:
   web:
     image: docker-temp-repos.myket.ir/jewerly-shop:dev
+    build:
+      args:
+        COMMIT: "TEST"
     ports: 
       - '8001:8000'
