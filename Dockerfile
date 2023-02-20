@@ -17,3 +17,7 @@ COPY . /
 # run server
 ENTRYPOINT ["python3"] 
 CMD ["manage.py", "runserver", "0.0.0.0:8000"]
+ARG BRANCH
+ARG COMMIT
+LABEL ir.myket.branch=$BRANCH
+LABEL ir.myket.commit=$COMMIT
