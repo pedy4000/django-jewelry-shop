@@ -1,8 +1,9 @@
 version: '3.4'
 services:
   web:
-    environment:
-      - COMMIT_HASH=${COMMIT_HASH}
+    build:
+      args:
+          COMMIT: 252
     deploy:
       mode: replicated
       replicas: 2
